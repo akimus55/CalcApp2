@@ -7,52 +7,55 @@
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:paddingTop="16dp"
+    android:orientation="vertical"
     tools:context="jp.techacademy.sumika.sugawara.calcapp.MainActivity">
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Textview"
-        android:id="@+id/textView1"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/editText1"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         android:text="+"
         android:id="@+id/button1"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button1"
+        android:layout_centerVertical="true"
         android:text="-"
         android:id="@+id/button2"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button2"
+        android:layout_centerVertical="true"
         android:text="×"
         android:id="@+id/button3"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button3"
+        android:layout_centerVertical="true"
         android:text="÷"
         android:id="@+id/button4"/>
 
-    <EditText1
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/editText1"/>
 
-    <EditText2
-        android:layout_width="match_parent"
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
         android:id="@+id/editText2"/>
 
-    <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="TextView"
-        android:id="@+id/textView2"/>
 
 </RelativeLayout>

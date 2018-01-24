@@ -7,13 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
+import android.widget.Toast;
+
+import java.lang.Double;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-
-    EditText mEditText;
-    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,35 +29,43 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button button4 = (Button) findViewById(R.id.button4);
         button4.setOnClickListener(this);
-
-        mEditText = (EditText) findViewById(R.id.editText1);
-        mEditText = (EditText) findViewById(R.id.editText2);
-        mTextView = (TextView) findViewById(R.id.textView1);
-        mTextView = (TextView) findViewById(R.id.textView2);
     }
 
     @Override
     public void onClick(View v){
-        Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("VALUE1",0);
-        intent.putExtra("VALUE2",0);
-        startActivity(intent);
         EditText editText1 = (EditText)findViewById(R.id.editText1);
         EditText editText2 = (EditText)findViewById(R.id.editText2);
 
         String str1 = editText1.getText().toString();
         String str2 = editText2.getText().toString();
-        Double a = new Double(str1);
-        Double b = new Double(str2);
+        Double a = new Double(0);
+        Double b = new Double(0);
+
+        try{
+            a = new Double(str1);
+            b = new Double(str2);
+        }catch (Exception e){
+            Toast.makeText(this, "数値が入力されていません。", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        double c = 0;
         if(v.getId() == R.id.button1){
-            Double c = a+b;
+            c = a+b;
         }else if(v.getId() == R.id.button2){
-            Double c = a-b;
+            c = a-b;
         }else if(v.getId() == R.id.button3){
-            Double c = a*b;
-        }else if(v.getId() == R.id.button4){
-            Double c = a/b;
+            c = a*b;
+        }else if(v.getId() == R.id.button4) {
+            if (b==0) {
+                Toast.makeText(this, "0では割り算できません。", Toast.LENGTH_LONG).show();
+                return;
+            }
+            c = a / b;
+        }
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("Double c",c);
+        startActivity(intent);
+
         }
     }
-
-}
